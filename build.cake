@@ -30,8 +30,7 @@ Task("Clean")
 Task("Restore-NuGet-Packages")
     .IsDependentOn("Clean")
     .Does(() => {
-
-     DotNetCoreRestore("./src");
+     DotNetCoreRestore("./");
 });
 
 Task("Restore-Npm-Packages")
@@ -89,7 +88,7 @@ Task("Running-Grunt-Tasks")
     .IsDependentOn("Running-Grunt-Tasks")
     .Does(() =>
     {
-        DotNetCoreBuild("./src/Main.sln",
+        DotNetCoreBuild("./Main.sln",
             new DotNetCoreBuildSettings()
             {
                 Configuration = configuration,
